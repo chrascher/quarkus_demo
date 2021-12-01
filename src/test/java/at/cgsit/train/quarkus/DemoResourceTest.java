@@ -10,12 +10,22 @@ import static org.hamcrest.CoreMatchers.is;
 public class DemoResourceTest {
 
     @Test
+    public void testHelloEchoEndpoint() {
+        given()
+                .when().get("/helloDemo/echo/CHRIS")
+                .then()
+                .statusCode(200)
+                .body(is("Hello [SIRHC]"));
+    }
+
+
+    @Test
     public void testHelloEndpoint() {
         given()
           .when().get("/helloDemo")
           .then()
              .statusCode(200)
-             .body(is("Hello RESTEasy"));
+             .body(is("Hello helloDemo TEST2"));
     }
 
 }
