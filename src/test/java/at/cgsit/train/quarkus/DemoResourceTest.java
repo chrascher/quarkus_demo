@@ -10,6 +10,15 @@ import static org.hamcrest.CoreMatchers.is;
 public class DemoResourceTest {
 
     @Test
+    public void testHelloMicroprofileParam() {
+        given()
+                .when().get("/helloDemo/showMessage")
+                .then()
+                .statusCode(200)
+                .body(is("Hello: QuarkusWifiDevOps")); // Modified line
+    }
+
+    @Test
     public void testHelloEchoEndpoint() {
         given()
                 .when()
