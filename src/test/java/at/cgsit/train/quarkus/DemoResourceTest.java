@@ -20,9 +20,12 @@ public class DemoResourceTest {
 
     @Test
     public void testHelloEchoEndpoint() {
+
+        String testParam = "CHRIS";
+
         given()
                 .when()
-                .get("/helloDemo/echo/CHRIS")
+                .get("/helloDemo/echo/" + testParam)
                 .then()
                 .statusCode(200)
                 .body(is("Hello [SIRHC]"));
