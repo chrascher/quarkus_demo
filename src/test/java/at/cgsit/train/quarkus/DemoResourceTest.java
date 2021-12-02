@@ -1,6 +1,7 @@
 package at.cgsit.train.quarkus;
 
 import io.quarkus.test.junit.QuarkusTest;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
@@ -16,6 +17,12 @@ public class DemoResourceTest {
                 .then()
                 .statusCode(200)
                 .body(is("Hello: QuarkusWifiDevOps")); // Modified line
+    }
+
+    @Test
+    @Disabled
+    public void testDisabled() {
+        throw new RuntimeException("");
     }
 
     @Test
