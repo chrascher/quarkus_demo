@@ -12,7 +12,8 @@ public class DemoResourceTest {
     @Test
     public void testHelloEchoEndpoint() {
         given()
-                .when().get("/helloDemo/echo/CHRIS")
+                .when()
+                .get("/helloDemo/echo/CHRIS")
                 .then()
                 .statusCode(200)
                 .body(is("Hello [SIRHC]"));
@@ -22,10 +23,11 @@ public class DemoResourceTest {
     @Test
     public void testHelloEndpoint() {
         given()
-          .when().get("/helloDemo")
+          .when()
+          .get("/helloDemo")
           .then()
-             .statusCode(200)
-             .body(is("Hello helloDemo TEST2"));
+          .statusCode(200)
+          .body(is("Hello helloDemo TEST2"));
     }
 
 }

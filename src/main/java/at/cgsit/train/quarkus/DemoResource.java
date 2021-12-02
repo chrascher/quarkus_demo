@@ -1,7 +1,8 @@
 package at.cgsit.train.quarkus;
 
-import at.cgsit.train.quarkus.service.DemoService;
+import at.cgsit.train.quarkus.service.DemoServiceNew;
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
+import org.jboss.logging.Logger;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
@@ -14,21 +15,27 @@ import javax.ws.rs.core.MediaType;
  */
 @Path("/helloDemo")
 public class DemoResource {
+    private static final Logger LOG = Logger.getLogger(DemoResource.class);
 
     @Inject
-    DemoService service;
+    DemoServiceNew service;
 
-
+    /**
+     * http://localhost:8080/helloDemo/echo/<inputString>
+     * @param inputString
+     * @return service processed input string
+     */
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     @Path("/echo/{inputString}")
     public String greeting(@PathParam String inputString) {
+        LOG.debug("log: " + inputString);
         return "Hello [" + service.reverseEcho(inputString ) + "]";
     }
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    public String helloSimple() {
+    public String helloSimple2() {
         return "Hello helloDemo TEST2";
     }
 }
