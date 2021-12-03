@@ -49,7 +49,7 @@ public class DemoResource {
      * @return message
      */
     @GET
-    @Path("/showMessage")
+    @Path("e/showMessage")
     @Produces(MediaType.TEXT_PLAIN)
     public String helloMicroProfileMessage() {
         return "Hello: " + message;
@@ -59,7 +59,7 @@ public class DemoResource {
     @Path("/showMessage2")
     @Produces(MediaType.TEXT_PLAIN)
     public String helloMicroProfileMessage2() {
-        return "Hello 2 : " + message;
+        return "Hello 3 : " + message;
     }
 
 
