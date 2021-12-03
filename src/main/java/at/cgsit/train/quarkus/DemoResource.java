@@ -55,6 +55,14 @@ public class DemoResource {
         return "Hello: " + message;
     }
 
+    @GET
+    @Path("/showMessage2")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String helloMicroProfileMessage2() {
+        return "Hello 2 : " + message;
+    }
+
+
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
