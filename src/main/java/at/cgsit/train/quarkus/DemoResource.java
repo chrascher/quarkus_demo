@@ -37,7 +37,7 @@ public class DemoResource {
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     @Path("/echo/{inputString}")
-    public String greeting(@PathParam String inputString) {
+    public String greeting(@PathParam("inputString") String inputString) {
         LOG.debug("log: " + inputString);
         return "Hello [" + service.reverseEcho(inputString ) + "]";
     }
