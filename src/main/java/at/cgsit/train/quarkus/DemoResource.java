@@ -49,7 +49,7 @@ public class DemoResource {
      * @return message
      */
     @GET
-    @Path("e/showMessage")
+    @Path("/showMessage")
     @Produces(MediaType.TEXT_PLAIN)
     public String helloMicroProfileMessage() {
         return "Hello: " + message;
