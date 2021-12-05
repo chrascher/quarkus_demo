@@ -35,9 +35,9 @@ spec:
           valueFrom:
             configMapKeyRef:
               name: quarkus-demo-config
-              key: mongo-url
-         - name: QUARKUS_DATASOURCE_JDBC_URL
-           value: jdbc:postgresql://quarkus-db:5432/simplechat
+              key: quarkus-demo-url
+        #- name: QUARKUS_DATASOURCE_JDBC_URL
+        #   value: jdbc:postgresql://quarkus-db:5432/simplechat
 ---
 apiVersion: v1
 kind: Service

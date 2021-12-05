@@ -49,10 +49,10 @@ spec:
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
               name: quarkus-db-claim0
-          volumes:
-            - name: quarkus-db-claim0
-              persistentVolumeClaim:
-                claimName: quarkus-db-claim0
+      volumes:
+       - name: quarkus-db-claim0
+         persistentVolumeClaim:
+           claimName: quarkus-db-claim0
 ---
 apiVersion: v1
 kind: Service

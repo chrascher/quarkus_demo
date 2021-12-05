@@ -3,6 +3,4 @@ kind: ConfigMap
 metadata:
   name: quarkus-demo-config
 data:
-  db-url: quarkus-db
-
-
+  quarkus-demo-url: quarkus-db
