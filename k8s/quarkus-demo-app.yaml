@@ -46,7 +46,7 @@ metadata:
   labels:
     app: quarkus-service
 spec:
-  type: NodePort
+  type: LoadBalancer  # NodePort
   ports:
     - protocol: TCP
       port: 8080
