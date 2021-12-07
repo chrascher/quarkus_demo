@@ -35,6 +35,18 @@ pipeline {
                 }
             }
         }
+        stage('Build quarkus container image') {
+            steps {
+                echo "Build and Unit Test"
+                sh "mvn -B clean package package -Dquarkus.container-image.build=true -DskipTests=true"
+            }
+            post {
+                always {
+                    junit "**/surefire-reports/*.xml"
+                }
+            }
+        }
+
 
     }
     post {

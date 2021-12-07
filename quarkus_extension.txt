@@ -1,0 +1,7 @@
+
+
+
+mvn quarkus:add-extension -Dextensions="container-image-docker"
+
+mvn clean package -Dquarkus.container-image.build=true
+
