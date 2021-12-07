@@ -16,7 +16,18 @@
     <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
     <quarkus.platform.version>2.5.1.Final</quarkus.platform.version>
     <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
+
+    <junit.jupiter.version>5.5.2</junit.jupiter.version>
+    <junit.platform.version>1.8.1</junit.platform.version>
+
+    <project.nexus.snapshot-serverId>/maven-snapshots</project.nexus.snapshot-serverId>
+    <project.nexus.snapshot-repository>http://ec2-44-199-2-166.compute-1.amazonaws.com:8081/repository/
+    </project.nexus.snapshot-repository>
+
+    <version.plugin.wagon-maven-plugin>1.0</version.plugin.wagon-maven-plugin>
   </properties>
+
+
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -37,15 +48,17 @@
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-resteasy</artifactId>
     </dependency>
-    <!-- Hibernate ORM specific dependencies -->
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-hibernate-orm</artifactId>
     </dependency>
-    <!-- JDBC driver dependencies -->
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-jdbc-postgresql</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-container-image-docker</artifactId>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
@@ -92,6 +105,17 @@
           </systemPropertyVariables>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>wagon-maven-plugin</artifactId>
+        <version>${version.plugin.wagon-maven-plugin}</version>
+        <configuration>
+          <serverId>${project.nexus.wagon-upload-serverId}</serverId>
+          <fromDir>target/repository</fromDir>
+          <url>${project.nexus.wagon-upload-url}</url>
+        </configuration>
+      </plugin>
+
     </plugins>
   </build>
   <profiles>
@@ -130,4 +154,43 @@
       </properties>
     </profile>
   </profiles>
+
+  <scm>
+    <url>https://github.com/CGS-IT-Solutions/kurs_0410_demo</url>
+    <connection>scm:git:https://github.com/CGS-IT-Solutions/kurs_0410_demo</connection>
+    <developerConnection>scm:git:https://github.com/CGS-IT-Solutions/kurs_0410_demo</developerConnection>
+    <tag>test</tag>
+  </scm>
+
+  <distributionManagement>
+    <snapshotRepository>
+      <id>kurs_04_10</id>
+      <url>http://ec2-44-199-2-166.compute-1.amazonaws.com:8081/repository/maven-snapshots/</url>
+    </snapshotRepository>
+    <repository>
+      <id>nexus-releases</id>
+      <url>http://ec2-44-199-2-166.compute-1.amazonaws.com:8081/repository/maven-releases/</url>
+    </repository>
+  </distributionManagement>
+
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-report-plugin</artifactId>
+        <version>3.0.0-M5</version>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>findbugs-maven-plugin</artifactId>
+        <version>3.0.5</version>
+        <configuration>
+          <xmlOutput>true</xmlOutput>
+          <!-- Optional directory to put findbugs xdoc xml report -->
+          <xmlOutputDirectory>target/site</xmlOutputDirectory>
+        </configuration>
+      </plugin>
+    </plugins>
+  </reporting>
+
 </project>
