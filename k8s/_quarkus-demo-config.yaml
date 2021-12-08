@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: quarkus-demo-config
+  name: trainer-quarkus-demo-config
 data:
   quarkus-demo-url: quarkus-db
   test: "chris"

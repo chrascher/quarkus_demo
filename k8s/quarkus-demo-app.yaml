@@ -24,17 +24,17 @@ spec:
         - name: USER_NAME
           valueFrom:
             secretKeyRef:
-              name: quarkus-db-secret
+              name: trainer-quarkus-db-secret
               key: postgres-user
         - name: USER_PWD
           valueFrom:
             secretKeyRef:
-              name: quarkus-db-secret
+              name: trainer-quarkus-db-secret
               key: postgres-password
         - name: DB_URL
           valueFrom:
             configMapKeyRef:
-              name: quarkus-demo-config
+              name: trainer-quarkus-demo-config
               key: quarkus-demo-url
         #- name: QUARKUS_DATASOURCE_JDBC_URL
         #   value: jdbc:postgresql://quarkus-db:5432/simplechat
