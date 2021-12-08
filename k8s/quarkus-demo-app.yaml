@@ -17,16 +17,18 @@ spec:
     spec:
       containers:
       - name: trainer-quarkus-service
-        image: public.ecr.aws/e8v6d9d7/quarkus-demo-jvm:1.0.0 # quarkus-demo-jvm:1.0.0 # sha256:76bd2f142864206b3a862a006b1d89d28e13973341004e6fb58a010342c62abd  # cgs/quarkus-demo-jvm:latest
+        image: ec2-44-199-2-166.compute-1.amazonaws.com:8083/cgsittest/quarkus-demo:1.0.0-SNAPSHOT # public.ecr.aws/e8v6d9d7/quarkus-demo-jvm:1.0.0 # quarkus-demo-jvm:1.0.0 # sha256:76bd2f142864206b3a862a006b1d89d28e13973341004e6fb58a010342c62abd  # cgs/quarkus-demo-jvm:latest
         ports:
          - containerPort: 8080
         env:
-        - name: USER_NAME
+        - name: POSTGRES_DB
+          value: simplechat
+        - name: POSTGRES_USER
           valueFrom:
             secretKeyRef:
               name: trainer-quarkus-db-secret
               key: postgres-user
-        - name: USER_PWD
+        - name: POSTGRES_PASSWORD
           valueFrom:
             secretKeyRef:
               name: trainer-quarkus-db-secret
@@ -35,7 +37,7 @@ spec:
           valueFrom:
             configMapKeyRef:
               name: trainer-quarkus-demo-config
-              key: quarkus-demo-url
+              key: trainer-quarkus-db
         #- name: QUARKUS_DATASOURCE_JDBC_URL
         #   value: jdbc:postgresql://quarkus-db:5432/simplechat
 ---

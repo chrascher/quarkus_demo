@@ -4,6 +4,6 @@ kind: ConfigMap
 metadata:
   name: trainer-quarkus-demo-config
 data:
-  quarkus-demo-url: quarkus-db
+  quarkus-demo-url: trainer-quarkus-db
   test: "chris"
 
