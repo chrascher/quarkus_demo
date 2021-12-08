@@ -44,7 +44,7 @@ pipeline {
         stage('Docker push quarkus container image') {
             steps {
                 echo "Docker push quarkus container image"
-                // sh "mvn -B package package -Dquarkus.container-image.build=true -DskipTests=true"
+                sh "mvn -B package package -Dquarkus.container-image.build=true -DskipTests=true"
             }
         }
 
