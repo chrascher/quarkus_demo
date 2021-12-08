@@ -27,7 +27,7 @@ pipeline {
         stage('Build and Unit Test') {
             steps {
                 echo "Build and Unit Test"
-                sh "mvn -B -nsu clean install"
+                sh "mvn -B -nsu install"
             }
             post {
                 always {
@@ -38,15 +38,15 @@ pipeline {
         stage('Build quarkus container image') {
             steps {
                 echo "Build and Unit Test"
-                sh "mvn -B clean package package -Dquarkus.container-image.build=true -DskipTests=true"
-            }
-            post {
-                always {
-                    junit "**/surefire-reports/*.xml"
-                }
+                sh "mvn -B package package -Dquarkus.container-image.build=true -DskipTests=true"
             }
         }
-
+        stage('Docker push quarkus container image') {
+            steps {
+                echo "Docker push quarkus container image"
+                // sh "mvn -B package package -Dquarkus.container-image.build=true -DskipTests=true"
+            }
+        }
 
     }
     post {
