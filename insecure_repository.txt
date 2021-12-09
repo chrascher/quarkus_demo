@@ -1,0 +1,38 @@
+
+
+
+http://ec2-44-199-2-166.compute-1.amazonaws.com:8081
+
+User: test
+Passwort: test123
+
+
+quarkus.container-image.name=quarkus-demo-trainer
+
+
+File ?ndern in :
+C:\Users\<username>\.docker\daemon.json
+
+C:\Users\cgssc\.docker\daemon.json
+
+------------------------------
+
+{
+  "builder": {
+    "gc": {
+      "defaultKeepStorage": "20GB",
+      "enabled": true
+    }
+  },
+  "debug": false,
+  "experimental": false,
+  "features": {
+    "buildkit": true
+  },
+  "insecure-registries": [
+	"localhost:5000",
+	"ec2-44-199-2-166.compute-1.amazonaws.com:8083"
+  ],
+  "registry-mirrors": []
+}
+
